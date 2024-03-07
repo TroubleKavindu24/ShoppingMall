@@ -2,6 +2,7 @@ const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const { use } = require("../routes/userRoute");
 
 //Generate Token
 const generateToken = (id) => {
@@ -175,7 +176,7 @@ const loginStatus = asyncHandler (async(req, res) => {
 const updateUser = asyncHandler (async(req, res) => {
     //res.send("Update User");
 
-    const user = await User.findById(req.user._id)
+    const user = await User.findById(req.user._id);
 
     if(user){
         const { name, email, photo, phone, bio } = user;
@@ -195,9 +196,40 @@ const updateUser = asyncHandler (async(req, res) => {
             bio: updateUser.bio,
         })
     } else {
-        res.status(404)
-        throw new Error("User not found")
+        res.status(404);
+        throw new Error("User not found");
     }
+});
+
+const changePassword = asyncHandler (async(req, res) => {
+    
+    //res.send("Password Changed");
+    const user = await User.findById(req.user._id);
+    const { oldPassword, password } = req.body
+
+    if ( !user ) {
+        res.status(400);
+        throw new Error("User not found, please signup");
+    }
+    //Validate
+    if ( !oldPassword || !password ) {
+        res.status(400);
+        throw new Error("Please add old and new password");
+    }
+
+    //Check if old password matches password in DB
+    const passwordIsCorrect = await bcrypt.compare(oldPassword, user.password)
+
+    //Save new password
+    if(user&&passwordIsCorrect){
+        user.password = password
+        await user.save()
+        res.status(200).send("Password changed successfull")
+    } else {
+        res.status(400);
+        throw new Error("Old password is incorrect");
+    }
+
 });
 
 module.exports = {
@@ -207,4 +239,5 @@ module.exports = {
     getUser,
     loginStatus,
     updateUser,
+    changePassword,
 };
