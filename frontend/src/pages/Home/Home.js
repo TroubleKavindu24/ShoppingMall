@@ -1,5 +1,5 @@
 import React from 'react';
-//import './Home.scss';
+import './Home.scss';
 import { RiProductHuntLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
 import heroImg from "../../assets/inv-img.png"
