@@ -2,31 +2,74 @@ import React from 'react';
 import './Home.scss';
 import { RiProductHuntLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
-import heroImg from "../../assets/inv-img.png"
+import heroImg from "../../assets/shoppingmall.jpeg"
 
 const Home = () => {
   return (
     <div className='home'>
         <nav className='container --flex-between'>
-            <div className='logo'>
-                <RiProductHuntLine size={35} />
-            </div>
-            <ul className='home-links'>
-                <li>
-                    <Link to="/register">Register</Link>
-                </li>
-                <li>
-                    <button className='--btn --btn-primary'>
-                        <Link to="/login">Login</Link>
-                    </button>
-                </li>
-                <li>
-                    <button className='--btn --btn-primary'>
-                        <Link to="/dashboard">Dashboard</Link>
-                    </button>
-                </li>
-            </ul>
+           
+                <div className='logo'>
+                    <RiProductHuntLine size={35} />
+                </div>
+                <ul className='home-links'>
+                    <li>
+                        <Link to="/register">Register</Link>
+                    </li>
+                    <li>
+                        <button className='--btn --btn-primary'>
+                            <Link to="/login">Login</Link>
+                        </button>
+                    </li>
+                    <li>
+                        <button className='--btn --btn-primary'>
+                            <Link to="/dashboard">Dashboard</Link>
+                        </button>
+                    </li>
+                </ul>
         </nav>
+
+
+
+        <nav className='container --flex-between'>
+           
+           <ul className='home-links'>
+               <li>
+               <button className='--btn --btn-primary'>
+                   <Link to="/">Categories</Link>
+                   </button>
+               </li>
+               <li>
+                   <button className='--btn --btn-primary'>
+                       <Link to="/">Home</Link>
+                   </button>
+               </li>
+               <li>
+                   <button className='--btn --btn-primary'>
+                       <Link to="/">Stores</Link>
+                   </button>
+               </li>
+               <li>
+               <button className='--btn --btn-primary'>
+                   <Link to="/">Book & Stall</Link>
+                   </button>
+               </li>
+               <li>
+                   <button className='--btn --btn-primary'>
+                       <Link to="/">Contact Us</Link>
+                   </button>
+               </li>
+               <li>
+                   <button className='--btn --btn-primary'>
+                       <Link to="/">About Us</Link>
+                   </button>
+               </li>
+           </ul>
+   </nav>
+
+
+
+
         {/*HERO SECTION*/}
         <section className='container hero'>
             <div className='hero-text'>
@@ -34,8 +77,7 @@ const Home = () => {
                     ITPM Shopping { "&" } Mall
                 </h2>
                 <p>
-                    Once you've completed these steps, try rebuilding your project. If the issue persists, double-check the error messages and consider whether there might be other underlying issues in your project configuration.
-                </p>
+                A shopping mall is no longer just a place to go to buy something, it's a community and entertainment center.                </p>
                 <div className='hero-buttons'>
                     <button className='--btn --btn-secondary'>
                         <Link to="/dashboard">Shopping Now</Link>

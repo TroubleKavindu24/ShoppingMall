@@ -17,22 +17,22 @@ const Register = () => {
             </h2>
 
             <form>
-                <input 
+                <input className='textbar'
                     type='text' 
                     placeholder='Name' 
                     required name="name"
                 /><br/>
-                <input 
+                <input className='textbar' 
                     type='email' 
                     placeholder='email' 
                     required name="email"
                 /><br/>
-                <input 
+                <input className='textbar' 
                     type='password' 
                     placeholder='password' 
                     required name="password"
                 /><br/>
-                <input 
+                <input className='textbar' 
                     type='password' 
                     placeholder='confirm password' 
                     required name="password"
